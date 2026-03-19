@@ -21,10 +21,10 @@
         .month-container.open { max-height: 600px; margin-bottom: 10px; }
         .month-item { padding: 8px 5px; font-size: 0.85rem; color: #888; font-weight: 300; cursor: pointer; display: block; }
 
-        /* [헤더 디자인] */
+        /* [헤더 디자인 수정] */
         header {
             display: flex; flex-direction: column; justify-content: flex-start;
-            height: 100px; padding: 0 15px; background-color: #fff;
+            height: 90px; padding: 0 15px; background-color: #fff; /* 높이 소폭 조정 */
             position: fixed; top: 0; width: 100%; z-index: 1000;
             border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -33,23 +33,25 @@
         .header-left { flex: 1; display: flex; align-items: center; }
         header h1 { flex: 2; text-align: center; font-size: 1.05rem; font-weight: 700; letter-spacing: -1px; margin-top: -2px; }
         .header-right { flex: 1; display: flex; justify-content: flex-end; gap: 15px; align-items: center; }
-        .header-bottom { display: flex; justify-content: center; align-items: center; width: 100%; height: 25px; margin-top: 15px; gap: 12px; }
-        .bubble-text { font-family: 'Crimson Text', serif !important; font-style: italic; font-size: 0.95rem; text-shadow: 0.2px 0 0 #555, -0.2px 0 0 #555, 0 0.2px 0 #555, 0 -0.2px 0 #555; letter-spacing: 0.2px; }
-        .heart-geo { position: relative; width: 7px; height: 7px; background-color: #ff91a4; transform: rotate(-45deg); }
-        .heart-geo::before, .heart-geo::after { content: ''; position: absolute; width: 7px; height: 7px; border-radius: 50%; background-color: #ff91a4; }
-        .heart-geo::before { top: -3.5px; left: 0; } .heart-geo::after { top: 0; left: 3.5px; }
-        .title-sub { font-size: 0.7rem; color: #555; font-weight: 700; }
+        
+        /* [수정] bubble/하트 삭제 및 간격 축소 */
+        .header-bottom { 
+            display: flex; justify-content: center; align-items: center; 
+            width: 100%; height: 20px; 
+            margin-top: 5px; /* 15px에서 5px로 줄여 위로 올림 */
+        }
+        .title-sub { font-size: 0.7rem; color: #555; font-weight: 700; letter-spacing: -0.5px; }
 
-        /* [수정된 날짜 구분선: 선 아래에 글씨] */
+        /* [수정] 날짜 구분선 간격 축소 */
         .date-divider-container {
             width: 100%;
             text-align: center;
-            margin: 10px 0 25px;
+            margin: 10px 0 15px; /* 하단 대화창과의 간격 25px -> 15px */
         }
         .date-line {
             width: 100%;
             border-bottom: 1px solid rgba(0,0,0,0.08);
-            margin-bottom: 8px;
+            margin-bottom: 4px; /* 날짜 글씨와의 간격 8px -> 4px */
         }
         .date-text-center {
             color: #999;
@@ -58,16 +60,15 @@
         }
 
         /* [대화창 스타일] */
-        .chat-container { padding: 120px 15px 30px; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .chat-container { padding: 110px 15px 30px; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
         .message-unit { display: flex; align-items: flex-start; gap: 10px; }
         .profile-img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; background-color: #ddd; }
         .user-name { font-size: 0.8rem; color: #555; font-weight: 500; margin-bottom: 4px; display: block; }
         .bubble-group { display: flex; align-items: flex-end; gap: 5px; }
         .bubble { max-width: 100%; padding: 9px 12px; background-color: #fff; border-radius: 2px 10px 10px 10px; font-size: 0.82rem; line-height: 1.4; color: #222; }
-        
-        /* [시간 스타일 수정: 오전 삭제] */
         .time { font-size: 0.65rem; color: #888; white-space: nowrap; margin-bottom: 2px; }
 
+        /* 아이콘 */
         .back-icon { font-family: 'Material Symbols Outlined' !important; font-size: 28px; font-variation-settings: 'wght' 250; cursor: pointer; margin-left: -5px; }
         .search-icon-custom { position: relative; width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; }
         .search-icon-custom::before { content: ''; position: absolute; top: 4px; left: 4px; width: 10.5px; height: 10.5px; border: 1.6px solid #333; border-radius: 50%; }
@@ -82,7 +83,8 @@
     <div class="menu-overlay" id="overlay"></div>
     <nav class="side-menu" id="sideMenu">
         <div class="year-item" onclick="toggleMonths('m23', this)">2023</div>
-        <div id="m23" class="month-container open"> <div class="month-item">2023/04</div><div class="month-item">2023/05</div><div class="month-item">2023/06</div>
+        <div id="m23" class="month-container open">
+            <div class="month-item">2023/04</div><div class="month-item">2023/05</div><div class="month-item">2023/06</div>
             <div class="month-item">2023/07</div><div class="month-item">2023/08</div><div class="month-item">2023/09</div>
             <div class="month-item">2023/10</div><div class="month-item">2023/11</div><div class="month-item">2023/12</div>
         </div>
@@ -101,9 +103,7 @@
             <div class="header-right"><div class="search-icon-custom"></div><div class="two-dots-icon"></div></div>
         </div>
         <div class="header-bottom">
-            <span class="bubble-text">bubble</span>
-            <div class="heart-geo"></div>
-            <span class="title-sub date-text">2023/04</span>
+            <span class="title-sub">2023/04</span>
         </div>
     </header>
 
