@@ -27,38 +27,14 @@
         }
         .menu-overlay.active { display: block; }
         
-        .year-item { 
-            padding: 12px 5px; 
-            font-size: 0.95rem; 
-            color: #555; 
-            font-weight: 400; 
-            cursor: pointer; 
-            display: block;
-            transition: color 0.2s;
-        }
+        .year-item { padding: 12px 5px; font-size: 0.95rem; color: #555; font-weight: 400; cursor: pointer; display: block; transition: color 0.2s; }
         .year-item:hover, .year-item.active { color: #ff91a4; font-weight: 500; }
-
-        .month-container {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out;
-            padding-left: 15px;
-        }
-        .month-container.open {
-            max-height: 600px;
-            margin-bottom: 10px;
-        }
-        .month-item {
-            padding: 8px 5px;
-            font-size: 0.85rem;
-            color: #888;
-            font-weight: 300;
-            cursor: pointer;
-            display: block;
-        }
+        .month-container { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; padding-left: 15px; }
+        .month-container.open { max-height: 600px; margin-bottom: 10px; }
+        .month-item { padding: 8px 5px; font-size: 0.85rem; color: #888; font-weight: 300; cursor: pointer; display: block; }
         .month-item:hover { color: #ff91a4; }
 
-        /* [기존 디자인 레이아웃 고정] */
+        /* [헤더 디자인 고정] */
         header {
             display: flex; flex-direction: column; justify-content: flex-start;
             height: 100px; padding: 0 15px; background-color: #fff;
@@ -76,6 +52,24 @@
         .heart-geo::before, .heart-geo::after { content: ''; position: absolute; width: 7px; height: 7px; border-radius: 50%; background-color: #ff91a4; }
         .heart-geo::before { top: -3.5px; left: 0; } .heart-geo::after { top: 0; left: 3.5px; }
         .title-sub { font-size: 0.7rem; color: #555; font-weight: 700; }
+
+        /* [날짜 구분선 스타일] */
+        .date-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 10px 0 25px;
+            color: #999;
+            font-size: 0.65rem;
+            font-weight: 300;
+        }
+        .date-divider::before, .date-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        .date-divider:not(:empty)::before { margin-right: .7em; }
+        .date-divider:not(:empty)::after { margin-left: .7em; }
 
         .chat-container { padding: 120px 15px 30px; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
         .message-unit { display: flex; align-items: flex-start; gap: 10px; }
@@ -104,27 +98,12 @@
             <div class="month-item">2023/07</div><div class="month-item">2023/08</div><div class="month-item">2023/09</div>
             <div class="month-item">2023/10</div><div class="month-item">2023/11</div><div class="month-item">2023/12</div>
         </div>
-
         <div class="year-item" onclick="toggleMonths('m24', this)">2024</div>
-        <div id="m24" class="month-container">
-            <div class="month-item">2024/01</div><div class="month-item">2024/02</div><div class="month-item">2024/03</div>
-            <div class="month-item">2024/04</div><div class="month-item">2024/05</div><div class="month-item">2024/06</div>
-            <div class="month-item">2024/07</div><div class="month-item">2024/08</div><div class="month-item">2024/09</div>
-            <div class="month-item">2024/10</div><div class="month-item">2024/11</div><div class="month-item">2024/12</div>
-        </div>
-
+        <div id="m24" class="month-container"><div class="month-item">2024/01</div></div>
         <div class="year-item" onclick="toggleMonths('m25', this)">2025</div>
-        <div id="m25" class="month-container">
-            <div class="month-item">2025/01</div><div class="month-item">2025/02</div><div class="month-item">2025/03</div>
-            <div class="month-item">2025/04</div><div class="month-item">2025/05</div><div class="month-item">2025/06</div>
-            <div class="month-item">2025/07</div><div class="month-item">2025/08</div><div class="month-item">2025/09</div>
-            <div class="month-item">2025/10</div><div class="month-item">2025/11</div><div class="month-item">2025/12</div>
-        </div>
-
+        <div id="m25" class="month-container"><div class="month-item">2025/01</div></div>
         <div class="year-item" onclick="toggleMonths('m26', this)">2026</div>
-        <div id="m26" class="month-container">
-            <div class="month-item">2026/01</div><div class="month-item">2026/02</div><div class="month-item">2026/03</div>
-        </div>
+        <div id="m26" class="month-container"><div class="month-item">2026/01</div><div class="month-item">2026/02</div><div class="month-item">2026/03</div></div>
     </nav>
 
     <header>
@@ -139,6 +118,8 @@
     </header>
 
     <main class="chat-container">
+        <div class="date-divider">2023년 4월 17일 월요일</div>
+
         <div class="message-unit">
             <img src="https://i.ibb.co/s9YCKWrN/230417.png" alt="신비" class="profile-img">
             <div>
@@ -156,17 +137,7 @@
                 <span class="user-name">신비</span>
                 <div class="bubble-group">
                     <div class="bubble">왜 아무도 안 오는것이여</div>
-                    <span class="time">오전 11:08</span>
-                </div>
-            </div>
-        </div>
-        <div class="message-unit">
-            <img src="https://i.ibb.co/s9YCKWrN/230417.png" alt="신비" class="profile-img">
-            <div>
-                <span class="user-name">신비</span>
-                <div class="bubble-group">
-                    <div class="bubble">나는 11시 되기 전부터 일어나서 대기하고 있었는데</div>
-                    <span class="time">오전 11:09</span>
+                    <span class="time">오전 11:01</span>
                 </div>
             </div>
         </div>
@@ -175,18 +146,8 @@
     <script>
         const sideMenu = document.getElementById('sideMenu');
         const overlay = document.getElementById('overlay');
-
-        function toggleMenu() {
-            sideMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-
-        function toggleMonths(id, el) {
-            const container = document.getElementById(id);
-            container.classList.toggle('open');
-            el.classList.toggle('active');
-        }
-
+        function toggleMenu() { sideMenu.classList.toggle('active'); overlay.classList.toggle('active'); }
+        function toggleMonths(id, el) { document.getElementById(id).classList.toggle('open'); el.classList.toggle('active'); }
         overlay.addEventListener('click', toggleMenu);
     </script>
 
