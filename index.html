@@ -5,280 +5,265 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신비</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@1,700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Noto Sans KR', sans-serif !important;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif !important; }
+        body { background: #eee; color: #333; -webkit-font-smoothing: antialiased; overflow-x: hidden; scroll-behavior: smooth; }
 
-        body {
-            background-color: #eeeeee;
-            color: #333;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        /* [사이드 메뉴 스타일] */
-        .side-menu {
-            position: fixed; top: 0; left: -250px;
-            width: 250px; height: 100%; background-color: #fff;
-            z-index: 2000; transition: left 0.3s ease;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
-            padding: 40px 20px;
-            overflow-y: auto;
-        }
+        /* [1. 사이드 메뉴] */
+        .side-menu, .photo-drawer { position: fixed; top: 0; height: 100%; background: #fff; z-index: 2000; transition: .3s; box-shadow: 0 0 10px rgba(0,0,0,0.05); padding: 40px 15px; overflow-y: auto; }
+        .side-menu { left: -160px; width: 160px; text-align: right; }
         .side-menu.active { left: 0; }
-        .menu-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.2); z-index: 1500; display: none;
-        }
-        .menu-overlay.active { display: block; }
+        .photo-drawer { right: -280px; width: 280px; padding: 30px 20px; text-align: left; }
+        .photo-drawer.active { right: 0; }
         
-        .year-item { 
-            padding: 12px 5px; 
-            font-size: 0.95rem; 
-            color: #555; 
-            font-weight: 400; 
-            cursor: pointer; 
-            display: block;
-            transition: color 0.2s;
-        }
-        .year-item:hover, .year-item.active { color: #ff91a4; font-weight: 500; }
+        .year-item { padding: 10px 0; font-size: 0.9rem; font-weight: 400; cursor: pointer; color: #bbb; }
+        .year-item.active { color: #7d67b9; font-weight: 500; }
+        .month-container { height: 0; overflow: hidden; opacity: 0; transition: 0.2s ease; }
+        .month-container.open { height: auto; opacity: 1; padding-bottom: 10px; }
+        .month-item { padding: 5px 0; font-size: 0.75rem; color: #999; cursor: pointer; font-weight: 300; }
 
-        .month-container {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out;
-            padding-left: 15px;
-        }
-        .month-container.open {
-            max-height: 600px;
-            margin-bottom: 10px;
-        }
-        .month-item {
-            padding: 8px 5px;
-            font-size: 0.85rem;
-            color: #888;
-            font-weight: 300;
-            cursor: pointer;
-            display: block;
-        }
-        .month-item:hover { color: #ff91a4; }
+        .drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; color: #7d67b9; font-size: 0.9rem; font-weight: 600; }
+        .drawer-close { font-size: 14px; cursor: pointer; color: #bbb; }
+        .photo-item { margin-bottom: 25px; display: flex; flex-direction: column; align-items: flex-start; }
+        .photo-item-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 1px solid #eee; margin-bottom: 10px; cursor: pointer; }
+        .photo-item-date { font-size: 0.7rem; color: #999; }
 
-        /* [수정된 헤더 디자인] */
-        header {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            height: 90px; /* 높이 소폭 조정 */
-            padding: 0 15px;
-            background-color: #fff;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
+        .menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.2); z-index: 1500; display: none; }
+        .menu-overlay.active { display: block; }
 
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            height: 50px;
-            margin-top: 5px;
-        }
+        /* [2. 헤더] */
+        header { position: fixed; top: 0; width: 100%; z-index: 1000; background: #fff; border-bottom: 1px solid rgba(0,0,0,0.1); border-radius: 0 0 12px 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+        .header-main { height: 90px; padding: 0 15px; display: flex; flex-direction: column; position: relative; }
+        .header-top { display: flex; align-items: center; height: 50px; margin-top: 5px; position: relative; }
+        header h1 { position: absolute; left: 50%; transform: translateX(-50%); font-size: 1.05rem; font-weight: 700; letter-spacing: -1px; width: max-content; }
+        .header-right { margin-left: auto; display: flex; gap: 15px; align-items: center; }
+        .header-bottom { display: flex; justify-content: center; align-items: center; height: 20px; margin: 5px 0; gap: 4px; }
+        .header-profile-img { height: 18px; object-fit: contain; }
+        .header-date-text { font-size: 0.7rem; color: #000; font-weight: 700; letter-spacing: -0.5px; }
+        .back-icon { font-family: 'Material Symbols Outlined' !important; font-size: 30px; font-variation-settings: 'wght' 200; cursor: pointer; margin-left: -5px; }
 
-        .header-left { flex: 1; display: flex; align-items: center; justify-content: flex-start; }
+        /* [3. 검색창] */
+        .search-bar-container { position: absolute; top: 90px; left: 0; width: 100%; height: 0; background: #fafafa; overflow: hidden; transition: 0.2s ease; display: flex; align-items: center; padding: 0 20px; }
+        header.search-open .search-bar-container { height: 40px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .search-input { flex: 1; border: none; background: transparent; font-size: 0.75rem; outline: none; }
 
-        header h1 {
-            flex: 2;
-            text-align: center;
-            font-size: 1.05rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            margin-top: -2px; 
-        }
+        /* [4. 채팅창 & 말풍선] */
+        .chat-container { padding: 110px 15px 30px; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+        header.search-open ~ .chat-container { padding-top: 150px; }
+        .date-divider-container { text-align: center; margin: 0 0 10px; }
+        .date-line { border-bottom: 1px solid rgba(0,0,0,0.08); margin-bottom: 4px; }
+        .date-text-center { color: #999; font-size: 0.65rem; }
 
-        .header-right { flex: 1; display: flex; justify-content: flex-end; gap: 15px; align-items: center; }
+        .message-unit { display: flex; gap: 10px; }
+        .profile-img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; background: #ddd; }
+        .user-name { font-size: 0.68rem; color: #222; font-weight: 400; margin-bottom: 3px; display: block; opacity: 0.9; }
+        .bubble-group { display: flex; align-items: flex-end; gap: 5px; }
+        
+        .bubble { padding: 9px 12px; background: #fff; border-radius: 2px 12px 12px 12px; font-size: 0.82rem; line-height: 1.4; color: #222; white-space: pre-line; box-shadow: none; width: fit-content; border: 1px solid #eee; } 
+        
+        .multi-bubble-container { display: flex; flex-direction: column; gap: 3px; align-items: flex-start; } 
+        .artist-reply-bubble { padding: 10px 10px; background: #fff; border-radius: 12px; box-shadow: none; width: fit-content; border: 1px solid #eee; } 
+        .artist-label { font-size: 0.6rem; font-weight: 700; color: #222; display: block; margin-bottom: 2px; opacity: 0.8; } 
+        .artist-text { font-size: 0.65rem; font-weight: 300; color: #777; display: block; line-height: 1.2; white-space: nowrap; }
+        
+        .followed-bubble { border-radius: 2px 12px 12px 12px; width: fit-content; }
+        .live-bubble { display: flex; align-items: center; gap: 7px; padding: 8px 12px; border: 1px solid #eee; box-shadow: none; } 
+        .live-icon-container { width: 18px; height: 18px; border-radius: 50%; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; }
+        .live-icon { font-family: 'Material Symbols Outlined' !important; font-size: 12px; color: #000; font-variation-settings: 'FILL' 1, 'wght' 700; }
+        .live-text { font-size: 0.82rem; transform: translateY(0.5px); }
+        .bubble-img-container { cursor: pointer; max-width: 200px; border-radius: 2px 15px 15px 15px; overflow: hidden; border: 1px solid #ddd; line-height: 0; box-shadow: none; } 
+        .bubble-img { width: 100%; height: auto; }
 
-        /* [수정] bubble/하트 삭제 및 간격 축소 */
-        .header-bottom {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 20px;
-            margin-top: 5px; /* 15px에서 5px로 줄여 밀착 */
-        }
+        .time { font-size: 0.6rem; color: #aaa; margin-bottom: 2px; min-width: 35px; }
 
-        /* [수정] 헤더 하단 날짜 */
-        .title-sub {
-            font-size: 0.7rem;
-            color: #555;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        /* [수정된 날짜 구분선 레이아웃] */
-        .date-divider-container {
-            width: 100%;
-            text-align: center;
-            margin: 10px 0 15px; /* 하단 대화창과의 간격 25px -> 15px */
-        }
-        .date-line {
-            width: 100%;
-            border-bottom: 1px solid rgba(0,0,0,0.08);
-            margin-bottom: 4px; /* 날짜 글씨와의 간격 8px -> 4px */
-        }
-        .date-text-center {
-            color: #999;
-            font-size: 0.65rem;
-            font-weight: 300;
-        }
-
-        /* [대화창 스타일] */
-        .chat-container {
-            padding: 110px 15px 30px; /* 헤더 높이 고려 조정 */
-            max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .message-unit {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .profile-img {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            object-fit: cover;
-            background-color: #ddd;
-        }
-
-        .user-name {
-            font-size: 0.8rem;
-            color: #555;
-            font-weight: 500;
-            margin-bottom: 4px;
-            display: block;
-        }
-
-        .bubble-group {
-            display: flex;
-            align-items: flex-end;
-            gap: 5px;
-        }
-
-        .bubble {
-            max-width: 100%;
-            padding: 9px 12px;
-            background-color: #fff;
-            border-radius: 2px 10px 10px 10px;
-            font-size: 0.82rem;
-            line-height: 1.4;
-            box-shadow: none;
-            white-space: pre-line;
-            color: #222;
-        }
-
-        /* [수정] 오전 삭제된 시간 스타일 */
-        .time {
-            font-size: 0.65rem;
-            color: #888;
-            white-space: nowrap;
-            margin-bottom: 2px;
-        }
-
-        /* 아이콘 스타일 유지 */
-        .back-icon { font-family: 'Material Symbols Outlined' !important; font-size: 28px; font-variation-settings: 'wght' 250; cursor: pointer; margin-left: -5px; }
-        .search-icon-custom { position: relative; width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; }
-        .search-icon-custom::before { content: ''; position: absolute; top: 4px; left: 4px; width: 10.5px; height: 10.5px; border: 1.6px solid #333; border-radius: 50%; }
-        .search-icon-custom::after { content: ''; position: absolute; bottom: 4px; right: 4px; width: 8px; height: 1.6px; background-color: #333; transform: rotate(45deg); transform-origin: bottom right; }
-        .two-dots-icon { position: relative; display: inline-flex; width: 24px; height: 24px; align-items: center; justify-content: center; }
-        .two-dots-icon::before, .two-dots-icon::after { content: ''; position: absolute; width: 2.5px; height: 2.5px; background-color: #333; border-radius: 50%; left: 50%; transform: translateX(-50%); }
-        .two-dots-icon::before { top: 6px; } .two-dots-icon::after { bottom: 6px; }
+        .search-result-info { font-size: 0.7rem; color: #7d67b9; text-align: center; margin: 10px 0 20px; width: 100%; font-weight: 500; }
+        .no-result { text-align: center; color: #ccc; padding: 50px 0; font-size: 0.7rem; width: 100%; }
+        .highlight { background-color: #7d67b9; color: white; padding: 0; border-radius: 0; }
+        .search-item { cursor: pointer; transition: background 0.2s; }
+        .image-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 3000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .image-modal.active { display: flex; }
+        .modal-content { max-width: 100%; max-height: 90%; object-fit: contain; }
+        .modal-close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 30px; cursor: pointer; }
+        
+        .search-icon-custom { position: relative; width: 24px; height: 24px; cursor: pointer; }
+        .search-icon-custom::before { content: ''; position: absolute; top: 4px; left: 4px; width: 10.5px; height: 10.5px; border: 1.2px solid #333; border-radius: 50%; }
+        .search-icon-custom::after { content: ''; position: absolute; bottom: 4px; right: 4px; width: 8px; height: 1.2px; background-color: #333; transform: rotate(45deg); transform-origin: bottom right; }
+        .two-dots-icon { position: relative; width: 20px; height: 20px; display: flex; flex-direction: column; justify-content: space-between; padding: 4px 9px; cursor: pointer; }
+        .two-dots-icon::before, .two-dots-icon::after { content: ''; width: 2.5px; height: 2.5px; background: #333; border-radius: 50%; }
+        
+        @keyframes flash { 0% { background: #7d67b933; } 100% { background: #fff; } }
+        .jump-target .bubble, .jump-target .live-bubble, .jump-target .bubble-img-container, .jump-target .artist-reply-bubble { animation: flash 1.5s ease-out; }
     </style>
 </head>
 <body>
-
     <div class="menu-overlay" id="overlay"></div>
-    <nav class="side-menu" id="sideMenu">
-        <div class="year-item" onclick="toggleMonths('m23', this)">2023</div>
-        <div id="m23" class="month-container open"> <div class="month-item">2023/04</div><div class="month-item">2023/05</div><div class="month-item">2023/06</div>
-            <div class="month-item">2023/07</div><div class="month-item">2023/08</div><div class="month-item">2023/09</div>
-            <div class="month-item">2023/10</div><div class="month-item">2023/11</div><div class="month-item">2023/12</div>
-        </div>
-        <div class="year-item" onclick="toggleMonths('m24', this)">2024</div>
-        <div id="m24" class="month-container"></div>
-        <div class="year-item" onclick="toggleMonths('m25', this)">2025</div>
-        <div id="m25" class="month-container"></div>
-        <div class="year-item" onclick="toggleMonths('m26', this)">2026</div>
-        <div id="m26" class="month-container"></div>
+    <nav class="side-menu" id="sideMenu"></nav>
+    <nav class="photo-drawer" id="photoDrawer">
+        <div class="drawer-header"><span>PROFILE</span><span class="drawer-close" onclick="togglePhotoDrawer()">✕</span></div>
+        <div id="photoList"></div>
     </nav>
 
-    <header>
-        <div class="header-top">
-            <div class="header-left"><span class="back-icon" onclick="toggleMenu()">chevron_left</span></div>
-            <h1>신비</h1>
-            <div class="header-right"><div class="search-icon-custom"></div><div class="two-dots-icon"></div></div>
+    <div class="image-modal" id="imageModal" onclick="this.classList.remove('active')">
+        <span class="modal-close">✕</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <header id="mainHeader">
+        <div class="header-main">
+            <div class="header-top">
+                <span class="back-icon" onclick="toggleMenu()">chevron_left</span>
+                <h1>신비</h1>
+                <div class="header-right">
+                    <div class="search-icon-custom" onclick="toggleSearch()"></div>
+                    <div class="two-dots-icon" onclick="togglePhotoDrawer()"></div>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <img src="https://i.ibb.co/gbk3hKn5/Kakao-Talk-20260319-185616825.jpg" class="header-profile-img">
+                <span class="header-date-text" id="headerDateDisplay">2023/04</span>
+            </div>
         </div>
-        <div class="header-bottom">
-            <span class="title-sub">2023/04</span>
+        <div class="search-bar-container" id="searchBar">
+            <input type="text" class="search-input" id="searchInput" placeholder="search" oninput="handleSearch()">
+            <span class="search-close-btn" onclick="closeSearch()" style="cursor:pointer; color:#bbb;">✕</span>
         </div>
     </header>
 
-    <main class="chat-container">
-        <div class="date-divider-container">
-            <div class="date-line"></div>
-            <div class="date-text-center">2023년 4월 17일 월요일</div>
-        </div>
-
-        <div class="message-unit">
-            <img src="https://i.ibb.co/s9YCKWrN/230417.png" alt="신비" class="profile-img">
-            <div>
-                <span class="user-name">신비</span>
-                <div class="bubble-group">
-                    <div class="bubble">기다리고있었습니다.
-버블제대로모시겠습니다.</div>
-                    <span class="time">11:00</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="message-unit">
-            <img src="https://i.ibb.co/s9YCKWrN/230417.png" alt="신비" class="profile-img">
-            <div>
-                <span class="user-name">신비</span>
-                <div class="bubble-group">
-                    <div class="bubble">왜 아무도 안 오는것이여</div>
-                    <span class="time">11:08</span>
-                </div>
-            </div>
-        </div>
-    </main>
+    <main class="chat-container" id="chatDisplay"></main>
 
     <script>
-        const sideMenu = document.getElementById('sideMenu');
-        const overlay = document.getElementById('overlay');
+        const chatData = {
+            "2023/04": [
+                { id: "m1", dateText: "2023년 4월 17일 월요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "기다리고있었습니다.\n버블제대로모시겠습니다.", time: "11:00", type: "text" },
+                { id: "m2", dateText: "2023년 4월 17일 월요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "왜 아무도 안 오는것이여", time: "11:08", type: "text" },
+                { id: "m3", dateText: "2023년 4월 17일 월요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "bubble LIVE", time: "11:13", type: "live" },
+                { id: "m4", dateText: "2023년 4월 17일 월요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "https://i.ibb.co/Q36TVmnV/230417-1.jpg", time: "11:20", type: "image" }
+            ],
+            "2026/03": [ 
+                { 
+                    id: "m5", 
+                    dateText: "2026년 3월 18일 수요일", 
+                    profile: "https://i.ibb.co/s9YCKWrN/230417.png", 
+                    name: "신비", 
+                    message: { label: "ARTIST의 답장", subText: "언니 또 여자들 많이 끌어당겼어.", mainText: "진~짜? 소녀들아~ 나에게로 오라~" }, 
+                    time: "19:33", 
+                    type: "multi" 
+                },
+                { id: "m6", dateText: "2026년 3월 19일 목요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "마지막 달인 3월입니다.", time: "22:30", type: "text" } 
+            ]
+        };
 
-        function toggleMenu() {
-            sideMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
+        const photoData = [{ date: "2023 / 04 / 17", url: "https://i.ibb.co/s9YCKWrN/230417.png" }];
+        let currentMonth = "2023/04";
+
+        const overlay = document.getElementById('overlay'), sideMenu = document.getElementById('sideMenu'), photoDrawer = document.getElementById('photoDrawer'), chatDisplay = document.getElementById('chatDisplay'), headerDate = document.getElementById('headerDateDisplay'), searchInput = document.getElementById('searchInput');
+
+        const toggleMenu = () => [sideMenu, overlay].forEach(el => el.classList.toggle('active'));
+        const togglePhotoDrawer = () => [photoDrawer, overlay].forEach(el => el.classList.toggle('active'));
+        overlay.onclick = () => [sideMenu, photoDrawer, overlay].forEach(el => el.classList.remove('active'));
+
+        function openModal(url) { document.getElementById('modalImg').src = url; document.getElementById('imageModal').classList.add('active'); }
+
+        function renderChat(month) {
+            currentMonth = month; headerDate.innerText = month; chatDisplay.innerHTML = '';
+            let lastDate = "";
+            (chatData[month] || []).forEach(chat => {
+                if (chat.dateText !== lastDate) {
+                    chatDisplay.innerHTML += `<div class="date-divider-container"><div class="date-line"></div><p class="date-text-center">${chat.dateText}</p></div>`;
+                    lastDate = chat.dateText;
+                }
+                const unit = document.createElement('section'); unit.className = 'message-unit'; unit.id = chat.id;
+                let bubbleContent = '';
+                if(chat.type === 'image') {
+                    bubbleContent = `<div class="bubble-img-container" onclick="openModal('${chat.message}')"><img src="${chat.message}" class="bubble-img"></div>`;
+                } else if(chat.type === 'live') {
+                    bubbleContent = `<div class="bubble live-bubble"><div class="live-icon-container"><span class="live-icon">call</span></div><span class="live-text">${chat.message}</span></div>`;
+                } else if(chat.type === 'multi') {
+                    bubbleContent = `<div class="multi-bubble-container"><div class="artist-reply-bubble"><span class="artist-label">${chat.message.label}</span><span class="artist-text">${chat.message.subText}</span></div><div class="bubble followed-bubble">${chat.message.mainText}</div></div>`;
+                } else {
+                    bubbleContent = `<div class="bubble">${chat.message}</div>`;
+                }
+                unit.innerHTML = `<img src="${chat.profile}" class="profile-img"><div><span class="user-name">${chat.name}</span><div class="bubble-group">${bubbleContent}<span class="time">${chat.time}</span></div></div>`;
+                chatDisplay.appendChild(unit);
+            });
         }
 
-        function toggleMonths(id, el) {
-            const container = document.getElementById(id);
-            container.
+        function toggleSearch() { document.getElementById('mainHeader').classList.toggle('search-open'); if(!document.getElementById('mainHeader').classList.contains('search-open')) renderChat(currentMonth); else searchInput.focus(); }
+        function closeSearch() { document.getElementById('mainHeader').classList.remove('search-open'); searchInput.value = ''; renderChat(currentMonth); }
+        
+        /* [수정] 검색 기능: 특별 말풍선 구조 유지 & 대소문자 무시 */
+        function handleSearch() {
+            const k = searchInput.value.trim().toLowerCase();
+            if (!k) { renderChat(currentMonth); return; }
+            chatDisplay.innerHTML = `<p class="search-result-info">'${searchInput.value}' 검색 결과</p>`;
+            let found = false;
+            Object.keys(chatData).sort().forEach(m => {
+                const filtered = chatData[m].filter(c => {
+                    if (c.type === 'image' || c.type === 'live') return false;
+                    const targetText = (c.type === 'multi' ? c.message.mainText : c.message).toLowerCase();
+                    return targetText.includes(k);
+                });
+                if (filtered.length > 0) {
+                    found = true;
+                    chatDisplay.innerHTML += `<div class="date-divider-container"><div class="date-line" style="border-color:#7d67b9"></div><p class="date-text-center" style="color:#7d67b9">${m}</p></div>`;
+                    filtered.forEach(chat => {
+                        let originalText = (chat.type === 'multi' ? chat.message.mainText : chat.message);
+                        let highlighted = originalText.replace(new RegExp(`(${k})`, "gi"), `<span class="highlight">$1</span>`);
+                        
+                        let bubbleContent = '';
+                        if(chat.type === 'multi') {
+                            // [수정] 검색 결과에서도 답장 라벨을 포함한 멀티 구조 유지
+                            bubbleContent = `<div class="multi-bubble-container"><div class="artist-reply-bubble"><span class="artist-label">${chat.message.label}</span><span class="artist-text">${chat.message.subText}</span></div><div class="bubble followed-bubble">${highlighted}</div></div>`;
+                        } else {
+                            bubbleContent = `<div class="bubble">${highlighted}</div>`;
+                        }
+
+                        chatDisplay.innerHTML += `<section class="message-unit search-item" onclick="jumpToMessage('${m}', '${chat.id}')"><img src="${chat.profile}" class="profile-img"><div><span class="user-name">${chat.name}</span><div class="bubble-group">${bubbleContent}<span class="time">${chat.time}</span></div></div></section>`;
+                    });
+                }
+            });
+            if (!found) chatDisplay.innerHTML = `<p class="no-result">검색 결과가 없습니다.</p>`;
+        }
+
+        function jumpToMessage(m, id) {
+            closeSearch(); renderChat(m);
+            setTimeout(() => {
+                const el = document.getElementById(id);
+                if(el) { window.scrollTo({ top: el.offsetTop - 110, behavior: 'smooth' }); el.classList.add('jump-target'); setTimeout(() => el.classList.remove('jump-target'), 2000); }
+            }, 100);
+        }
+
+        function renderSide() {
+            sideMenu.innerHTML = '';
+            const years = [2023, 2024, 2025, 2026];
+            years.forEach(y => {
+                let yEl = document.createElement('div'); yEl.className = 'year-item'; yEl.innerText = y;
+                let c = document.createElement('div'); c.className = 'month-container';
+                yEl.onclick = () => { 
+                    document.querySelectorAll('.month-container').forEach(mc => mc !== c && mc.classList.remove('open'));
+                    document.querySelectorAll('.year-item').forEach(yi => yi !== yEl && yi.classList.remove('active'));
+                    c.classList.toggle('open'); yEl.classList.toggle('active'); 
+                };
+                let startM = (y === 2023) ? 4 : 1;
+                let endM = (y === 2026) ? 3 : 12;
+                for (let i = startM; i <= endM; i++) {
+                    let mStr = `${y}/${String(i).padStart(2, '0')}`;
+                    let mEl = document.createElement('div'); mEl.className = 'month-item'; mEl.innerText = mStr;
+                    mEl.onclick = (e) => { e.stopPropagation(); renderChat(mStr); toggleMenu(); };
+                    c.appendChild(mEl);
+                }
+                sideMenu.append(yEl, c);
+            });
+        }
+
+        function renderPhotos() {
+            const list = document.getElementById('photoList'); list.innerHTML = '';
+            photoData.forEach(p => { list.innerHTML += `<div class="photo-item"><img src="${p.url}" class="photo-item-img" onclick="openModal('${p.url}')"><p class="photo-item-date">${p.date}</p></div>`; });
+        }
+
+        renderChat("2023/04"); renderSide(); renderPhotos();
+    </script>
+</body>
+</html>
