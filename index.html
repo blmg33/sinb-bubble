@@ -83,9 +83,44 @@
         .no-result { text-align: center; color: #ccc; padding: 50px 0; font-size: 0.7rem; width: 100%; }
         .highlight { background-color: #7d67b9; color: white; padding: 0; border-radius: 0; }
         .search-item { cursor: pointer; transition: background 0.2s; }
-        .image-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 3000; display: none; align-items: center; justify-content: center; padding: 20px; }
-        .image-modal.active { display: flex; }
-        .modal-content { max-width: 100%; max-height: 90%; object-fit: contain; }
+        
+        /* [복구] 이미지 모달창: 화면 정중앙 정렬 및 배경 설정 */
+.image-modal { 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0, 0, 0, 0.9); /* 검은색 배경 */
+    z-index: 3000; 
+    display: none; /* 기본은 숨김 */
+    align-items: center;    /* 세로 중앙 */
+    justify-content: center; /* 가로 중앙 */
+    padding: 20px; 
+}
+
+/* 이미지를 정중앙에 띄우는 핵심 클래스 */
+.image-modal.active { 
+    display: flex; 
+}
+
+/* 사진 크기 조절 */
+.modal-content { 
+    max-width: 95%; 
+    max-height: 85%; 
+    object-fit: contain; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* [복구] 오른쪽 위 X 버튼 스타일 */
+.modal-close { 
+    position: absolute; 
+    top: 30px; 
+    right: 25px; 
+    color: #ffffff; /* 흰색으로 확실히 보이게 */
+    font-size: 15px; 
+    font-weight: bold;
+    cursor: pointer; 
+    text-shadow: 0 0 10px rgba(0,0,0,0.8); /* 배경이 밝아도 보이게 그림자 추가 */
+    z-index: 3001; /* 사진보다 위에 표시 */
+}
         
         .static-img-container { max-width: 100px; overflow: hidden; line-height: 0; pointer-events: none; user-select: none; -webkit-user-drag: none; }
         .static-img { width: 100%; height: auto; display: block; -webkit-touch-callout: none; }
@@ -524,17 +559,32 @@
                     lastDate = chat.dateText;
                 }
                 const unit = document.createElement('section'); unit.className = 'message-unit'; unit.id = chat.id;
+                // renderChat 함수 안의 기존 if/else if 블록을 이 내용으로 교체하세요.
+
                 let bubbleContent = '';
+                
+                // 1. 일반 이미지 (클릭 시 모달창 열림)
                 if(chat.type === 'image') {
                     bubbleContent = `<div class="bubble-img-container" onclick="openModal('${chat.message}')"><img src="${chat.message}" class="bubble-img"></div>`;
-                } else if(chat.type === 'static_image') {
-        bubbleContent = `<div class="static-img-container" oncontextmenu="return false;"><img src="${chat.message}" class="static-img"></div>`;
-    }
-    else if(chat.type === 'live') {
+                } 
+                
+                // 2. 정적 이미지 (클릭/다운로드 불가)
+                else if(chat.type === 'static_image') {
+                    bubbleContent = `<div class="static-img-container" oncontextmenu="return false;"><img src="${chat.message}" class="static-img"></div>`;
+                } 
+                
+                // 3. 보이스/라이브 말풍선
+                else if(chat.type === 'live') {
                     bubbleContent = `<div class="bubble live-bubble"><div class="live-icon-container"><span class="live-icon">call</span></div><span class="live-text">${chat.message}</span></div>`;
-                } else if(chat.type === 'multi') {
+                } 
+                
+                // 4. 아티스트 답장형(멀티) 말풍선
+                else if(chat.type === 'multi') {
                     bubbleContent = `<div class="multi-bubble-container"><div class="artist-reply-bubble"><span class="artist-label">${chat.message.label}</span><span class="artist-text">${chat.message.subText}</span></div><div class="bubble followed-bubble">${chat.message.mainText}</div></div>`;
-                } else {
+                } 
+                
+                // 5. 일반 텍스트 말풍선
+                else {
                     bubbleContent = `<div class="bubble">${chat.message}</div>`;
                 }
                 unit.innerHTML = `<img src="${chat.profile}" class="profile-img"><div><span class="user-name">${chat.name}</span><div class="bubble-group">${bubbleContent}<span class="time">${chat.time}</span></div></div>`;
@@ -617,5 +667,10 @@
 
         renderChat("2023/04"); renderSide(); renderPhotos();
     </script>
+    
+    <div class="image-modal" id="imageModal" onclick="this.classList.remove('active')">
+    <span class="modal-close">✕</span>
+    <img class="modal-content" id="modalImg">
+</div>
 </body>
 </html>
