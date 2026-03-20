@@ -239,6 +239,41 @@
         
         @keyframes flash { 0% { background: #7d67b933; } 100% { background: #fff; } }
         .jump-target .bubble, .jump-target .live-bubble, .jump-target .bubble-img-container, .jump-target .artist-reply-bubble { animation: flash 1.5s ease-out; }
+        
+        /* 우측 역대 프사 리스트 전용 스타일 */
+.profile-history-container {
+    padding: 20px 15px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 20px;
+}
+.history-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.history-list {
+    display: flex;
+    flex-direction: column; /* 세로 나열 */
+    gap: 12px;
+    align-items: center;
+}
+.history-item {
+    width: 55px;
+    height: 55px;
+    border-radius: 22px; /* 버블 특유의 부드러운 사각형 */
+    object-fit: cover;
+    border: 1.5px solid #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+.history-item:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
     </style>
 </head>
 <body>
@@ -1100,89 +1135,89 @@
                 { id: "m800", dateText: "2023년 7월 4일 화요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "안뇽", time: "16:10", type: "text" }
             ], 
             "2026/03": [ 
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "안뇽", time: "19:23", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "어쩌다보니 수요일 저녁입니다", time: "19:23", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "아니 벌써 2026년 25% 지났대", time: "19:24", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "말도 안돼", time: "19:24", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "거짓말", time: "19:25", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "아직 비비지는 2025년에 머물러있는데;;", time: "19:25", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/260318-1.jpg", time: "19:27", type: "image" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/260318-2.jpg", time: "19:27", type: "image" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "ㅇㅏ 맞다", time: "19:27", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "@@@ 가져", time: "19:27", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "가오슝하고 춤추는 내가 ", time: "19:28", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "너무 둔해보여서", time: "19:28", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "열심히 움직이고 살기로 결심했어", time: "19:28", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "오랜만에 춤추니 몸이 너무 무거웠달까.,", time: "19:28", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "근데 가오슝 날씨 너어어어무 좋았어서", time: "19:30", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "한국도 얼른 미세먼지 없는 봄날씨 됐음 좋겠다!!!!", time: "19:30", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "근데 오랜만에 스케줄하니까", time: "19:32", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "@@@한테 줄 사진이 생겨서", time: "19:32", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "넘 기뻤어ㅠ", time: "19:32", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: { label: "ARTIST의 답장", subText: "인스타도 올려줄거지?💕", mainText: "올렸잖아." }, time: "19:32", type: "multi" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: { label: "ARTIST의 답장", subText: "언니 또 여자들 많이 끌어당겼어.", mainText: "진~짜? 소녀들아~ 나에게로 오라~" }, time: "19:33", type: "multi" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: { label: "ARTIST의 답장", subText: "언니돼? 이모 돼? 아줌마 돼? ㅠㅠ된다고 해줘", mainText: "다들 소녀입니다" }, time: "19:35", type: "multi" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/260318-3.jpg", time: "19:36", type: "image" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "공연 사진은 ㅂㄹ 맘에 안 들어서", time: "19:36", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "안올릴거야", time: "19:36", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: { label: "ARTIST의 답장", subText: "남자 나비도 오랜만에 한번 불러줘", mainText: "안녕 남자나비" }, time: "19:37", type: "multi" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "왜 안올리냐면", time: "19:38", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "사진들이 다 넘 애매해", time: "19:38", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "그 각자의 기준치가 있잖아?", time: "19:38", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "존중해주자.", time: "19:38", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/260318-4.jpg", time: "19:41", type: "image" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "이건 공연 끝나구", time: "19:41", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "셋이서 내 호텔방에서 오순도순 얘기하면서 맥주 마샸는데", time: "19:41", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "맥주에 고양이 그려져있고", time: "19:41", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "MEOW MEOW MEOW로 도배되어 있는거야", time: "19:41", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "그래서 으나언니가 찍어줬어", time: "19:41", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: { label: "ARTIST의 답장", subText: "이제 제법 똥(머리)크기가 커졋다", mainText: "당연하지!!!!!!!!!!!! 조금만 더 길러여지.,그럼 난 완벽한 긴머리" }, time: "19:42", type: "multi" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: { label: "ARTIST의 답장", subText: "오 이젠 가발 안써도 되네", mainText: "가발이 아니라 피스.라고 해줄래" }, time: "19:43", type: "multi" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: { label: "ARTIST의 답장", subText: "근데 언니 아까 비하인드 올라왔는데 저 날 사진도 있으까..", mainText: "포카로 다 내버렸어" }, time: "19:44", type: "multi" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/260318-5.jpg", time: "19:45", type: "image" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "오 이런거 있다", time: "19:45", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: { label: "ARTIST의 답장", subText: "혹시 그 필터 심심할때마다 쓰는거야? 좋아서 물어보는고야", mainText: "모르겠는데 스케줄 있으면 한장씩 찍게 된달까" }, time: "19:46", type: "multi" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/260318-6.jpg", time: "19:47", type: "image" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "한장 찾았다", time: "19:47", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: { label: "ARTIST의 답장", subText: "오얼사 신비가 왼얼셀카는 귀한데", mainText: "미안한데 이것도 오른쪽 얼굴이야" }, time: "19:49", type: "multi" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "근데 혹시 저메추", time: "19:50", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "가능해?", time: "19:50", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "오늘은 진짜 생각해둔 메뉴없음", time: "19:50", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "진짜임", time: "19:50", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "하 맘에 드는 메뉴가 없네..", time: "19:51", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "나비 이럴건가?", time: "19:51", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: { label: "ARTIST의 답장", subText: "간장게장 족발 수육 잔치국수 탕수육 술떡 물냉면 비빔냉면 차돌된장찌개 짜장면 월남쌈 짬뽕 잡탕밥 돼지갈비 유부 소갈비 참치김치찌개 보리밥 호박떡 육개장 팔보채 벌집삼겹살 버블티 평양냉면 알밥 대패삼겹살 꽈배기도넛 초밥 회오리감자 호미빙 오징어버터구이 연탄불고기 오레오빙수 연두부 회덮밥 깐풍기 미역국 물회 콩나물국밥 오징어회 참치회 고등어구이 명란젓 배추김치 고사리 크림카레우동 갈비찜 치맥 돈까스 볶음김치 계란말이 숯불닭갈비 소고기무국 곰탕 갈비탕 호박전 치즈감자고로케 쫄병스낵 케밥 골뱅이무침 깍두기 비빔국수 꽃빵 참치비빔밥 불고기버거 겉절이 수제비 파전 명이나물 피자찐빵 오돌뼈 양념게장 팟타이 떡볶이 뼈해장국 가리비구이 무지개떡 간장새우 김밥 녹차모찌 생새우초밥 남산왕돈까스 모닥치기 조랭이떡 녹치케 골뱅이소면무침 김치만두 군만두 물만두 찐빵 멸치볶음 쫄면 순대 곱창 대창 막창 LA갈비 콩나물무침 모찌롤 냉치킨 선지해장국 깐쇼새우 유산슬 고구마빵 돼지국밥 횡성한우 파김치 새우죽 고추장찌개 통감자 엽떡 회냉면 낙지젓 육포 고구마밥 생선까스 오이지 된장국 찹쌀도넛 백김치 파래 안동찜닭 까르보나라떡볶이 설렁탕 석박지 육회비빔밥 어묵꼬치 열무비빔밥 광어회 고추잡채 닭도리탕 참치볶음 슈크림빵 오징어무침 도라지 양념갈비 닭똥집 식혜 한우스테이크 돌솥비빔밥 성게알 야쿠르트 조기구이 돼지갈비찜 명란스파게티 후쿠오카함바그 파무침 미숫가루 총각김치 쌈장 떡갈비 양꼬치 홍초 굴 짬뽕밥 말린과일", mainText: "어..이중에는 있겠다 고마워.." }, time: "19:52", type: "multi" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: { label: "ARTIST의 답장", subText: "그럴꺼면 알아서 드세요 ;", mainText: "어어 이쁘게 말해야지~" }, time: "19:52", type: "multi" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: { label: "ARTIST의 답장", subText: "실비김치 보쌈 나왔다던데 원할머니에", mainText: "헉 이거 궁금하기는 했어! 나 실비김치라는것을 한번도 안먹어봤고든" }, time: "19:52", type: "multi" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "아니 근데 실비김치 안먹어본건 이유가 있어", time: "19:54", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "이미 집에 집김치가 많은데", time: "19:54", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "내가 실비김치까지 다 먹을 자신이 없었어ㅠㅠㅋㅋ", time: "19:54", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "사실 자취하는 사람들은 다 알지 않아..?ㅠㅠ", time: "19:55", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "김치냉장고가 아닌 이상", time: "19:55", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "김치가 너무 빨리 익어버려거", time: "19:55", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "부지런히 먹어줘야해", time: "19:55", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "집김치 먹기도 바빠ㅠㅠㅋㅋ", time: "19:55", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: { label: "ARTIST의 답장", subText: "아닐거같긴한데 너 호박인절미 좋아해? 창억떡 유행이자나", mainText: "이건 이미 비비지 초창기때 많이 먹었답니다. 냉동실 쟁여템이였음" }, time: "19:56", type: "multi" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "한창 진짜 많이 먹었었는데", time: "19:57", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "주변 사람들한테도 막 추천하고 다녔었음", time: "19:57", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "근데 요새는 건강식품^^..이 궁금하달까..~", time: "19:58", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "이너뷰티 해보려해^^", time: "19:58", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "그래서 막 요즘 알고리즘에 건강식품이나 막 운동? 관련된? 그런거 뜨면 막 들어가봐", time: "19:59", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "그렇지만 우리 막 광고에 휘둘리는 그런 사람 되지말자", time: "20:00", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "ㄹㅏ고 말하지만 이미 휩쓸린 사람이 말했습니다", time: "20:00", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "아침에 올리브유랑 레몬즙인가 뭐시기", time: "20:01", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "그거 같이 되어있는거 사봄", time: "20:01", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "공복에 먹으면 좋대^^..", time: "20:01", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: { label: "ARTIST의 답장", subText: "헐 너 공복에 위 튼튼해? 레몬즙 먹고 버틸수있는 강철 위야?", mainText: "매운 음식도 버티는데 그것도 당연히 버티지 않을까? 나 건강검진하면 위가 진짜 깨끗하대" }, time: "20:02", type: "multi" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "일주일 해보고 후기 알려줄게", time: "20:03", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "내 안색이 얼마나 좋아졌는지", time: "20:03", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "후후후..", time: "20:03", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "근데 나 이만 가볼게", time: "20:05", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "이제 배고프다", time: "20:05", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "뭐 먹을지는 아직도 미정이야", time: "20:05", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "어플을 보고 결정하겠어", time: "20:05", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "@@@도 밥 안 먹었으면 꼭 챙겨드시오", time: "20:05", type: "text" },
-                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "안뇽입니다", time: "20:06", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "안뇽", time: "19:23", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "어쩌다보니 수요일 저녁입니다", time: "19:23", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "아니 벌써 2026년 25% 지났대", time: "19:24", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "말도 안돼", time: "19:24", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "거짓말", time: "19:25", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "아직 비비지는 2025년에 머물러있는데;;", time: "19:25", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/260318-1.jpg", time: "19:27", type: "image" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/260318-2.jpg", time: "19:27", type: "image" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "ㅇㅏ 맞다", time: "19:27", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "@@@ 가져", time: "19:27", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "가오슝하고 춤추는 내가 ", time: "19:28", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "너무 둔해보여서", time: "19:28", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "열심히 움직이고 살기로 결심했어", time: "19:28", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "오랜만에 춤추니 몸이 너무 무거웠달까.,", time: "19:28", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "근데 가오슝 날씨 너어어어무 좋았어서", time: "19:30", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "한국도 얼른 미세먼지 없는 봄날씨 됐음 좋겠다!!!!", time: "19:30", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "근데 오랜만에 스케줄하니까", time: "19:32", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "@@@한테 줄 사진이 생겨서", time: "19:32", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "넘 기뻤어ㅠ", time: "19:32", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: { label: "ARTIST의 답장", subText: "인스타도 올려줄거지?💕", mainText: "올렸잖아." }, time: "19:32", type: "multi" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: { label: "ARTIST의 답장", subText: "언니 또 여자들 많이 끌어당겼어.", mainText: "진~짜? 소녀들아~ 나에게로 오라~" }, time: "19:33", type: "multi" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: { label: "ARTIST의 답장", subText: "언니돼? 이모 돼? 아줌마 돼? ㅠㅠ된다고 해줘", mainText: "다들 소녀입니다" }, time: "19:35", type: "multi" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/260318-3.jpg", time: "19:36", type: "image" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "공연 사진은 ㅂㄹ 맘에 안 들어서", time: "19:36", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "안올릴거야", time: "19:36", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: { label: "ARTIST의 답장", subText: "남자 나비도 오랜만에 한번 불러줘", mainText: "안녕 남자나비" }, time: "19:37", type: "multi" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "왜 안올리냐면", time: "19:38", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "사진들이 다 넘 애매해", time: "19:38", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "그 각자의 기준치가 있잖아?", time: "19:38", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "존중해주자.", time: "19:38", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/260318-4.jpg", time: "19:41", type: "image" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "이건 공연 끝나구", time: "19:41", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "셋이서 내 호텔방에서 오순도순 얘기하면서 맥주 마샸는데", time: "19:41", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "맥주에 고양이 그려져있고", time: "19:41", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "MEOW MEOW MEOW로 도배되어 있는거야", time: "19:41", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "그래서 으나언니가 찍어줬어", time: "19:41", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: { label: "ARTIST의 답장", subText: "이제 제법 똥(머리)크기가 커졋다", mainText: "당연하지!!!!!!!!!!!! 조금만 더 길러여지.,그럼 난 완벽한 긴머리" }, time: "19:42", type: "multi" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: { label: "ARTIST의 답장", subText: "오 이젠 가발 안써도 되네", mainText: "가발이 아니라 피스.라고 해줄래" }, time: "19:43", type: "multi" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: { label: "ARTIST의 답장", subText: "근데 언니 아까 비하인드 올라왔는데 저 날 사진도 있으까..", mainText: "포카로 다 내버렸어" }, time: "19:44", type: "multi" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/260318-5.jpg", time: "19:45", type: "image" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "오 이런거 있다", time: "19:45", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: { label: "ARTIST의 답장", subText: "혹시 그 필터 심심할때마다 쓰는거야? 좋아서 물어보는고야", mainText: "모르겠는데 스케줄 있으면 한장씩 찍게 된달까" }, time: "19:46", type: "multi" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/260318-6.jpg", time: "19:47", type: "image" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "한장 찾았다", time: "19:47", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: { label: "ARTIST의 답장", subText: "오얼사 신비가 왼얼셀카는 귀한데", mainText: "미안한데 이것도 오른쪽 얼굴이야" }, time: "19:49", type: "multi" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "근데 혹시 저메추", time: "19:50", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "가능해?", time: "19:50", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "오늘은 진짜 생각해둔 메뉴없음", time: "19:50", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "진짜임", time: "19:50", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "하 맘에 드는 메뉴가 없네..", time: "19:51", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "나비 이럴건가?", time: "19:51", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: { label: "ARTIST의 답장", subText: "간장게장 족발 수육 잔치국수 탕수육 술떡 물냉면 비빔냉면 차돌된장찌개 짜장면 월남쌈 짬뽕 잡탕밥 돼지갈비 유부 소갈비 참치김치찌개 보리밥 호박떡 육개장 팔보채 벌집삼겹살 버블티 평양냉면 알밥 대패삼겹살 꽈배기도넛 초밥 회오리감자 호미빙 오징어버터구이 연탄불고기 오레오빙수 연두부 회덮밥 깐풍기 미역국 물회 콩나물국밥 오징어회 참치회 고등어구이 명란젓 배추김치 고사리 크림카레우동 갈비찜 치맥 돈까스 볶음김치 계란말이 숯불닭갈비 소고기무국 곰탕 갈비탕 호박전 치즈감자고로케 쫄병스낵 케밥 골뱅이무침 깍두기 비빔국수 꽃빵 참치비빔밥 불고기버거 겉절이 수제비 파전 명이나물 피자찐빵 오돌뼈 양념게장 팟타이 떡볶이 뼈해장국 가리비구이 무지개떡 간장새우 김밥 녹차모찌 생새우초밥 남산왕돈까스 모닥치기 조랭이떡 녹치케 골뱅이소면무침 김치만두 군만두 물만두 찐빵 멸치볶음 쫄면 순대 곱창 대창 막창 LA갈비 콩나물무침 모찌롤 냉치킨 선지해장국 깐쇼새우 유산슬 고구마빵 돼지국밥 횡성한우 파김치 새우죽 고추장찌개 통감자 엽떡 회냉면 낙지젓 육포 고구마밥 생선까스 오이지 된장국 찹쌀도넛 백김치 파래 안동찜닭 까르보나라떡볶이 설렁탕 석박지 육회비빔밥 어묵꼬치 열무비빔밥 광어회 고추잡채 닭도리탕 참치볶음 슈크림빵 오징어무침 도라지 양념갈비 닭똥집 식혜 한우스테이크 돌솥비빔밥 성게알 야쿠르트 조기구이 돼지갈비찜 명란스파게티 후쿠오카함바그 파무침 미숫가루 총각김치 쌈장 떡갈비 양꼬치 홍초 굴 짬뽕밥 말린과일", mainText: "어..이중에는 있겠다 고마워.." }, time: "19:52", type: "multi" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: { label: "ARTIST의 답장", subText: "그럴꺼면 알아서 드세요 ;", mainText: "어어 이쁘게 말해야지~" }, time: "19:52", type: "multi" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: { label: "ARTIST의 답장", subText: "실비김치 보쌈 나왔다던데 원할머니에", mainText: "헉 이거 궁금하기는 했어! 나 실비김치라는것을 한번도 안먹어봤고든" }, time: "19:52", type: "multi" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "아니 근데 실비김치 안먹어본건 이유가 있어", time: "19:54", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "이미 집에 집김치가 많은데", time: "19:54", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "내가 실비김치까지 다 먹을 자신이 없었어ㅠㅠㅋㅋ", time: "19:54", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "사실 자취하는 사람들은 다 알지 않아..?ㅠㅠ", time: "19:55", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "김치냉장고가 아닌 이상", time: "19:55", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "김치가 너무 빨리 익어버려거", time: "19:55", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "부지런히 먹어줘야해", time: "19:55", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "집김치 먹기도 바빠ㅠㅠㅋㅋ", time: "19:55", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: { label: "ARTIST의 답장", subText: "아닐거같긴한데 너 호박인절미 좋아해? 창억떡 유행이자나", mainText: "이건 이미 비비지 초창기때 많이 먹었답니다. 냉동실 쟁여템이였음" }, time: "19:56", type: "multi" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "한창 진짜 많이 먹었었는데", time: "19:57", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "주변 사람들한테도 막 추천하고 다녔었음", time: "19:57", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "근데 요새는 건강식품^^..이 궁금하달까..~", time: "19:58", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "이너뷰티 해보려해^^", time: "19:58", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "그래서 막 요즘 알고리즘에 건강식품이나 막 운동? 관련된? 그런거 뜨면 막 들어가봐", time: "19:59", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "그렇지만 우리 막 광고에 휘둘리는 그런 사람 되지말자", time: "20:00", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "ㄹㅏ고 말하지만 이미 휩쓸린 사람이 말했습니다", time: "20:00", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "아침에 올리브유랑 레몬즙인가 뭐시기", time: "20:01", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "그거 같이 되어있는거 사봄", time: "20:01", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "공복에 먹으면 좋대^^..", time: "20:01", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: { label: "ARTIST의 답장", subText: "헐 너 공복에 위 튼튼해? 레몬즙 먹고 버틸수있는 강철 위야?", mainText: "매운 음식도 버티는데 그것도 당연히 버티지 않을까? 나 건강검진하면 위가 진짜 깨끗하대" }, time: "20:02", type: "multi" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "일주일 해보고 후기 알려줄게", time: "20:03", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "내 안색이 얼마나 좋아졌는지", time: "20:03", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "후후후..", time: "20:03", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "근데 나 이만 가볼게", time: "20:05", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "이제 배고프다", time: "20:05", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "뭐 먹을지는 아직도 미정이야", time: "20:05", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "어플을 보고 결정하겠어", time: "20:05", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "@@@도 밥 안 먹었으면 꼭 챙겨드시오", time: "20:05", type: "text" },
+                { id: "m9999", dateText: "2026년 3월 18일 수요일", profile: "https://uploads.onecompiler.io/44gssj43k/44gt92s48/250700.jpg", name: "신비", message: "안뇽입니다", time: "20:06", type: "text" },
             ]
         };
 
@@ -1355,11 +1390,67 @@ else if(chat.type === 'video') {
         }
 
         function renderPhotos() {
-            const list = document.getElementById('photoList'); list.innerHTML = '';
-            photoData.forEach(p => { list.innerHTML += `<div class="photo-item"><img src="${p.url}" class="photo-item-img" onclick="openModal('${p.url}')"><p class="photo-item-date">${p.date}</p></div>`; });
-        }
+    const list = document.getElementById('photoList');
+    if (!list) return;
+    list.innerHTML = '';
+    
+    const renderedUrls = new Set();
+
+    // 1. photoData (수동 등록 사진)
+    if (typeof photoData !== 'undefined' && Array.isArray(photoData)) {
+        photoData.forEach(p => { 
+            if (p.url && !renderedUrls.has(p.url)) {
+                list.innerHTML += `
+                    <div class="photo-item">
+                        <img src="${p.url}" class="photo-item-img" onclick="openModal('${p.url}')">
+                        <p class="photo-item-date">${p.date}</p>
+                    </div>`;
+                renderedUrls.add(p.url);
+            }
+        });
+    }
+
+    // 2. chatData (자동 추출 프로필)
+    if (typeof chatData !== 'undefined') {
+        Object.keys(chatData).forEach(monthKey => {
+            const messages = chatData[monthKey];
+            if (!Array.isArray(messages)) return;
+
+            messages.forEach(chat => {
+                if (chat.profile && !renderedUrls.has(chat.profile)) {
+                    
+                    // --- 날짜 추출 로직 강화 ---
+                    let dateStr = chat.dateText || monthKey;
+                    let nums = dateStr.match(/\d+/g); // 숫자만 추출 ["2023", "4", "7"]
+                    
+                    if (nums && nums.length >= 2) {
+                        // 연도는 4자리 숫자를 찾거나 없으면 첫 번째 숫자 사용
+                        let y = nums.find(n => n.length === 4) || nums;
+                        // 월은 연도를 제외한 첫 번째 숫자
+                        let m = nums.find(n => n !== y) || nums;
+                        // 일은 연도와 월을 제외한 숫자 (없으면 01)
+                        let d = nums.find(n => n !== y && n !== m) || "01";
+
+                        // 04, 07 처럼 두 자릿수로 통일
+                        let finalDate = `${y} / ${String(m).padStart(2, '0')} / ${String(d).padStart(2, '0')}`;
+
+                        list.innerHTML += `
+                            <div class="photo-item">
+                                <img src="${chat.profile}" class="photo-item-img" onclick="openModal('${chat.profile}')">
+                                <p class="photo-item-date">${finalDate}</p>
+                            </div>`;
+                        
+                        renderedUrls.add(chat.profile);
+                    }
+                }
+            });
+        });
+    }
+}
 
         renderChat("2023/04"); renderSide(); renderPhotos();
+        
+
     </script>
     
     <div class="image-modal" id="imageModal" onclick="this.classList.remove('active')">
