@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..100" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신비</title>
@@ -83,6 +84,67 @@
         .no-result { text-align: center; color: #ccc; padding: 50px 0; font-size: 0.7rem; width: 100%; }
         .highlight { background-color: #7d67b9; color: white; padding: 0; border-radius: 0; }
         .search-item { cursor: pointer; transition: background 0.2s; }
+        
+        /* 동영상 말풍선 컨테이너 */
+       .bubble-video-container { position: relative; display: inline-block; /* 내용물 크기에 맞게 */ max-width: 200px; border-radius: 2px 15px 15px 15px; /* 버블 특유의 모양 */
+                                 overflow: hidden; background-color: #000; line-height: 0;cursor: pointer;}
+
+        /* 썸네일 이미지/비디오 스타일 */
+       .bubble-video-container video, 
+       .bubble-video-container .bubble-img {width: 100%;height: auto;display: block;object-fit: cover;}
+
+        .video-play-icon { 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* 폰트 설정 */
+    font-family: 'Material Symbols Outlined' !important; 
+    
+    /* 굵기 고정 */
+    font-weight: 100 !important; 
+    
+    /* 🚩 [수정] 둥글기(ROUND) 속성 키워드 강화 및 채우기(FILL) 해제 */
+    /* ROUND 100이 모서리를 아주 둥글게 만듭니다 */
+    font-variation-settings: 'FILL' 0, 'wght' 100, 'grad' 0, 'opsz' 24, 'ROUND' 400 !important; 
+    
+    /* 아이콘 크기 (삼각형이 너무 커서 원 밖으로 나가지 않게 28~30px 추천) */
+    font-size: 40px; 
+    color: rgba(255, 255, 255, 0.7);
+    
+    /* 배경 원 (기존 유지) */
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    
+    pointer-events: none; 
+    z-index: 10;
+}
+
+/* 🚩 [추가] 재생 아이콘 밑에 뜰 영상 길이(Duration) 스타일 */
+.video-duration {
+    position: absolute;
+    bottom: 5px;   /* 말풍선 아래에서 5px 위 */
+    right: 7px;    /* 말풍선 오른쪽에서 7px 왼쪽 */
+    background-color: rgba(0, 0, 0, 0.5); /* 투명한 검은 배경 */
+    color: rgba(255, 255, 255, 0.9); /* 살짝 투명한 흰색 글씨 */
+    font-size: 10px; /* 아주 작게 */
+    padding: 1px 4px; /* 글자 주변 여백 */
+    border-radius: 3px; /* 살짝 둥글게 */
+    font-family: sans-serif; /* 깔끔한 고딕체 */
+    z-index: 11; /* 아이콘보다 위에 */
+    pointer-events: none; /* 클릭 방해 안 함 */
+}
+
+.bubble-video-container {
+    background-color: #000; /* 영상 로딩 전 검은색 배경 */
+}
         
         /* [복구] 이미지 모달창: 화면 정중앙 정렬 및 배경 설정 */
 .image-modal { 
@@ -532,6 +594,24 @@
                 { id: "m347", dateText: "2023년 6월 17일 토요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "왜이렇게 새벽같이 운동 했냐고?!?!!", time: "12:58", type: "text" },
                 { id: "m348", dateText: "2023년 6월 17일 토요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "아니이 그냥 뭔가 생활 패턴이 너무 오후 늦게 시작되는거 같아서", time: "12:58", type: "text" },
                 { id: "m349", dateText: "2023년 6월 17일 토요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "(12시도 오후지만)", time: "12:58", type: "text" },
+                { id: "m350", dateText: "2023년 6월 17일 토요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "신비복숭아 철이라고?", time: "13:01", type: "text" },
+                { id: "m351", dateText: "2023년 6월 17일 토요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "그러게 주연이도 그 말 하더라", time: "13:01", type: "text" },
+                { id: "m352", dateText: "2023년 6월 17일 토요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "그러나 나 또 다른 신비", time: "13:01", type: "text" },
+                { id: "m353", dateText: "2023년 6월 17일 토요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "걔의 유명세에 보템이 되지 ㄹ않기로 했지", time: "13:01", type: "text" },
+                { id: "m354", dateText: "2023년 6월 17일 토요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "헉 근데 진짜 덥다 오늘", time: "13:03", type: "text" },
+                { id: "m355", dateText: "2023년 6월 17일 토요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "밖으로 나가지 않기로 해요 우리", time: "13:03", type: "text" },
+                { id: "m356", dateText: "2023년 6월 17일 토요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "bubble LIVE", time: "13:06", type: "live" },
+                { id: "m357", dateText: "2023년 6월 17일 토요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "00:15:15", time: "13:21", type: "live" },
+                
+                { id: "m358", dateText: "2023년 6월 18일 일요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "해주냉면 맛있음", time: "15:20", type: "text" },
+                { id: "m359", dateText: "2023년 6월 18일 일요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "온육수가 진짜 맛있어", time: "15:20", type: "text" },
+                { id: "m360", dateText: "2023년 6월 18일 일요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "매운냉면 중 제일 맛있는듯(내 기준)", time: "15:21", type: "text" },
+                { id: "m361", dateText: "2023년 6월 18일 일요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "근데 다음엔 가게 가서 먹을까봐", time: "15:21", type: "text" },
+                { id: "m362", dateText: "2023년 6월 18일 일요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "배달로 비조리로 시켜서 해먹었는데 양념 준거 그냥 다 때려 부었는데 이렇게 먹는게 맞나 싶었어", time: "15:22", type: "text" },
+                { id: "m363", dateText: "2023년 6월 18일 일요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "가게 가서 먹은줄 알았오?!?!!!?", time: "15:22", type: "text" },
+                { id: "m364", dateText: "2023년 6월 18일 일요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "계란도 내가 삶았어!!!!!!!!!!🤓", time: "15:22", type: "text" },
+                { id: "m365", dateText: "2023년 6월 18일 일요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "맥주 영상 허락 받았다고?", time: "15:23", type: "text" },
+                { id: "m366", dateText: "2023년 6월 18일 일요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: "https://github.com/blmg33/sinb-bubble/raw/refs/heads/main/230618-1.mp4", time: "15:25", type: "video" },
             ], 
             "2026/03": [ 
                 { id: "m5", dateText: "2026년 3월 18일 수요일", profile: "https://i.ibb.co/s9YCKWrN/230417.png", name: "신비", message: { label: "ARTIST의 답장", subText: "언니 또 여자들 많이 끌어당겼어.", mainText: "진~짜? 소녀들아~ 나에게로 오라~" }, time: "19:33", type: "multi" },
@@ -549,6 +629,39 @@
         overlay.onclick = () => [sideMenu, photoDrawer, overlay].forEach(el => el.classList.remove('active'));
 
         function openModal(url) { document.getElementById('modalImg').src = url; document.getElementById('imageModal').classList.add('active'); }
+
+        /* [추가] 동영상 모달창 실행 함수 */
+function openVideoModal(videoUrl) {
+    const modal = document.getElementById('imageModal'); // 기존 이미지 모달창 재사용
+    const modalImg = document.getElementById('modalImg');
+    
+    // 1. 기존 이미지는 잠시 숨깁니다.
+    if (modalImg) modalImg.style.display = 'none';
+    
+    // 2. 혹시 이전에 열었던 비디오가 남아있다면 지웁니다.
+    const oldVideo = modal.querySelector('video');
+    if (oldVideo) oldVideo.remove();
+
+    // 3. 새로운 비디오 태그를 만듭니다.
+    const videoTag = document.createElement('video');
+    videoTag.src = videoUrl;
+    videoTag.className = 'modal-content'; // 이미지와 같은 중앙 정렬 스타일 사용
+    videoTag.controls = true;    // 재생, 볼륨, 전체화면 버튼 표시
+    videoTag.autoplay = true;    // 열자마자 바로 재생
+    videoTag.style.display = 'block';
+
+    // 4. 모달창에 비디오를 넣고 화면을 띄웁니다.
+    modal.appendChild(videoTag);
+    modal.classList.add('active');
+
+    // 5. [중요] 모달창을 닫을 때 비디오를 정지하고 삭제하는 설정
+    modal.onclick = function() {
+        modal.classList.remove('active');
+        videoTag.pause();  // 소리 끄기
+        videoTag.remove(); // 비디오 태그 제거
+        if (modalImg) modalImg.style.display = 'block'; // 다음 사진 클릭을 위해 이미지 태그 복구
+    };
+}
 
         function renderChat(month) {
             currentMonth = month; headerDate.innerText = month; chatDisplay.innerHTML = '';
@@ -583,6 +696,20 @@
                     bubbleContent = `<div class="multi-bubble-container"><div class="artist-reply-bubble"><span class="artist-label">${chat.message.label}</span><span class="artist-text">${chat.message.subText}</span></div><div class="bubble followed-bubble">${chat.message.mainText}</div></div>`;
                 } 
                 
+                // renderChat 함수 내부의 video 타입 처리 부분
+else if(chat.type === 'video') {
+    // 영상 주소 뒤에 #t=0.1을 붙여서 첫 화면을 미리보기로 만듭니다.
+    const videoPoster = chat.message + "#t=0.1";
+    
+    bubbleContent = `
+        <div class="bubble-video-container" onclick="openVideoModal('${chat.message}')">
+            <video class="bubble-img" preload="metadata">
+                <source src="${videoPoster}" type="video/mp4">
+            </video>
+            <span class="video-play-icon">play_arrow</span>
+        </div>`;
+}
+                
                 // 5. 일반 텍스트 말풍선
                 else {
                     bubbleContent = `<div class="bubble">${chat.message}</div>`;
@@ -595,39 +722,39 @@
         function toggleSearch() { document.getElementById('mainHeader').classList.toggle('search-open'); if(!document.getElementById('mainHeader').classList.contains('search-open')) renderChat(currentMonth); else searchInput.focus(); }
         function closeSearch() { document.getElementById('mainHeader').classList.remove('search-open'); searchInput.value = ''; renderChat(currentMonth); }
         
-        /* [수정] 검색 기능: 특별 말풍선 구조 유지 & 대소문자 무시 */
         function handleSearch() {
-            const k = searchInput.value.trim().toLowerCase();
-            if (!k) { renderChat(currentMonth); return; }
-            chatDisplay.innerHTML = `<p class="search-result-info">'${searchInput.value}' 검색 결과</p>`;
-            let found = false;
-            Object.keys(chatData).sort().forEach(m => {
-                const filtered = chatData[m].filter(c => {
-                    if (c.type === 'image' || c.type === 'live') return false;
-                    const targetText = (c.type === 'multi' ? c.message.mainText : c.message).toLowerCase();
-                    return targetText.includes(k);
-                });
-                if (filtered.length > 0) {
-                    found = true;
-                    chatDisplay.innerHTML += `<div class="date-divider-container"><div class="date-line" style="border-color:#7d67b9"></div><p class="date-text-center" style="color:#7d67b9">${m}</p></div>`;
-                    filtered.forEach(chat => {
-                        let originalText = (chat.type === 'multi' ? chat.message.mainText : chat.message);
-                        let highlighted = originalText.replace(new RegExp(`(${k})`, "gi"), `<span class="highlight">$1</span>`);
-                        
-                        let bubbleContent = '';
-                        if(chat.type === 'multi') {
-                            // [수정] 검색 결과에서도 답장 라벨을 포함한 멀티 구조 유지
-                            bubbleContent = `<div class="multi-bubble-container"><div class="artist-reply-bubble"><span class="artist-label">${chat.message.label}</span><span class="artist-text">${chat.message.subText}</span></div><div class="bubble followed-bubble">${highlighted}</div></div>`;
-                        } else {
-                            bubbleContent = `<div class="bubble">${highlighted}</div>`;
-                        }
-
-                        chatDisplay.innerHTML += `<section class="message-unit search-item" onclick="jumpToMessage('${m}', '${chat.id}')"><img src="${chat.profile}" class="profile-img"><div><span class="user-name">${chat.name}</span><div class="bubble-group">${bubbleContent}<span class="time">${chat.time}</span></div></div></section>`;
-                    });
+    const k = searchInput.value.trim().toLowerCase();
+    if (!k) { renderChat(currentMonth); return; }
+    chatDisplay.innerHTML = `<p class="search-result-info">'${searchInput.value}' 검색 결과</p>`;
+    let found = false;
+    Object.keys(chatData).sort().forEach(m => {
+        const filtered = chatData[m].filter(c => {
+            // 🚩 [수정] 사진, 라이브, 영상, 외부영상, 그리고 '정적 이미지(static_image)'까지 모두 검색에서 제외
+            if (c.type === 'image' || c.type === 'live' || c.type === 'video' || c.type === 'iframe_video' || c.type === 'static_image') return false;
+            
+            const targetText = (c.type === 'multi' ? c.message.mainText : c.message).toLowerCase();
+            return targetText.includes(k);
+        });
+        if (filtered.length > 0) {
+            found = true;
+            chatDisplay.innerHTML += `<div class="date-divider-container"><div class="date-line" style="border-color:#7d67b9"></div><p class="date-text-center" style="color:#7d67b9">${m}</p></div>`;
+            filtered.forEach(chat => {
+                let originalText = (chat.type === 'multi' ? chat.message.mainText : chat.message);
+                let highlighted = originalText.replace(new RegExp(`(${k})`, "gi"), `<span class="highlight">$1</span>`);
+                
+                let bubbleContent = '';
+                if(chat.type === 'multi') {
+                    bubbleContent = `<div class="multi-bubble-container"><div class="artist-reply-bubble"><span class="artist-label">${chat.message.label}</span><span class="artist-text">${chat.message.subText}</span></div><div class="bubble followed-bubble">${highlighted}</div></div>`;
+                } else {
+                    bubbleContent = `<div class="bubble">${highlighted}</div>`;
                 }
+
+                chatDisplay.innerHTML += `<section class="message-unit search-item" onclick="jumpToMessage('${m}', '${chat.id}')"><img src="${chat.profile}" class="profile-img"><div><span class="user-name">${chat.name}</span><div class="bubble-group">${bubbleContent}<span class="time">${chat.time}</span></div></div></section>`;
             });
-            if (!found) chatDisplay.innerHTML = `<p class="no-result">검색 결과가 없습니다.</p>`;
         }
+    });
+    if (!found) chatDisplay.innerHTML = `<p class="no-result">검색 결과가 없습니다.</p>`;
+}
 
         function jumpToMessage(m, id) {
             closeSearch(); renderChat(m);
